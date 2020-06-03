@@ -24,11 +24,12 @@ for iter = 1:num_iters
     % compute diff between hypothesis and actual
     diff = (h - y);
 
-    % multiply
-    adj = zeros(2,1);
-    adj(1) = sum(diff .* X(:,1)) * alpha / m;
-    adj(2) = sum(diff .* X(:,2)) * alpha / m;
-
+    % compute adjustment
+    %   - multiply X(i) by diff(i)
+    %   - scale by alpha
+    %   - divide by number of examples
+    adj = sum(diff .* X)' * alpha / m;
+    
     theta = theta - adj;
 
     % ============================================================
