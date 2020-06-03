@@ -13,9 +13,11 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
+% X is m*2, theta = 2*1
 
-
-
+predictions = X * theta;
+deltas = predictions - y;
+J = sum(deltas .^ 2) / m / 2;
 
 % =========================================================================
 
