@@ -17,11 +17,19 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
+    % X is m*2, theta = 2*1
 
+    h = X * theta;
 
+    % compute diff between hypothesis and actual
+    diff = (h - y);
 
+    % multiply
+    adj = zeros(2,1);
+    adj(1) = sum(diff .* X(:,1)) * alpha / m;
+    adj(2) = sum(diff .* X(:,2)) * alpha / m;
 
-
+    theta = theta - adj;
 
     % ============================================================
 
