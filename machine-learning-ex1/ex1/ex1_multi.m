@@ -82,43 +82,42 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-num_iters = 400;
+num_iters = 500;
 
 % Run Gradient Descent 
 % [theta, J1] = gradientDescentMulti(X, y, zeros(3, 1), 0.1, num_iters);
 % [theta, J2] = gradientDescentMulti(X, y, zeros(3, 1), 0.03, num_iters);
-[theta, J3] = gradientDescentMulti(X, y, zeros(3, 1), 0.01, num_iters);
+[theta, J3] = gradientDescentMulti(X, y, zeros(3, 1), 0.1, num_iters);
 % [theta, J4] = gradientDescentMulti(X, y, zeros(3, 1), 0.003, num_iters);
 % [theta, J5] = gradientDescentMulti(X, y, zeros(3, 1), 0.001, num_iters);
 
-% % Plot the convergence graph
-% figure;
-% xlabel('Number of iterations');
-% ylabel('Cost J');
-% hold on;
+% Plot the convergence graph
+figure;
+xlabel('Number of iterations');
+ylabel('Cost J');
+hold on;
 
 % plot(1:num_iters, J1, '-', 'LineWidth', 2);
 % plot(1:num_iters, J2, '-', 'LineWidth', 2);
-% % plot(1:num_iters, J3, '-', 'LineWidth', 2);
-% % plot(1:num_iters, J4, '-', 'LineWidth', 2);
-% % plot(1:num_iters, J5, '-', 'LineWidth', 2);
-% hold off;
+plot(1:num_iters, J3, '-', 'LineWidth', 2);
+% plot(1:num_iters, J4, '-', 'LineWidth', 2);
+% plot(1:num_iters, J5, '-', 'LineWidth', 2);
+hold off;
 
-% % Display gradient descent's result
-% fprintf('Theta computed from gradient descent: \n');
-% fprintf(' %f \n', theta);
-% fprintf('\n');
+% Display gradient descent's result
+fprintf('Theta computed from gradient descent: \n');
+fprintf(' %f \n', theta);
+fprintf('\n');
 
-% fprintf('Program paused. Press enter to continue.\n');
-% pause;
+fprintf('Program paused. Press enter to continue.\n');
+pause;
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-theta
 target = ([1650 3] - mu) ./ sigma;
-price = [1, target] * theta
+price = [1, target] * theta;
 
 % ============================================================
 
@@ -162,8 +161,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-theta
-price = [1, 1660, 3] * theta
+price = [1, 1650, 3] * theta;
 
 % ============================================================
 
