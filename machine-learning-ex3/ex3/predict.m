@@ -25,9 +25,9 @@ p = zeros(size(X, 1), 1);
 % Theta1 is 25x401
 % Theta2 is 10x26
 
-hidden = addOnes(X) * Theta1';
+hidden = sigmoid(addOnes(X) * Theta1');
 
-output = addOnes(hidden) * Theta2';
+output = sigmoid(addOnes(hidden) * Theta2');
 
 [m, p] = max(output, [], 2);
 
