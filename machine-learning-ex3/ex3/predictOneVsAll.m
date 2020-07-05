@@ -30,11 +30,18 @@ X = [ones(m, 1) X];
 %       for each row.
 %       
 
+% size(X) = [5000 401]
+% size(all_theta) = [10 401]
 
+probs = X * all_theta';
 
+% size(prod) = [5000 10]
 
-
-
+% `max` with two output returns
+%   - max value
+%   - index of max value
+% We want the indices, here, as they correspond to the predicted label. 
+[m, p] = max(probs, [], 2);
 
 % =========================================================================
 
