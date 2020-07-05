@@ -21,13 +21,15 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% X is 5000x400
+% Theta1 is 25x401
+% Theta2 is 10x26
 
+hidden = addOnes(X) * Theta1';
 
+output = addOnes(hidden) * Theta2';
 
-
-
-
-
+[m, p] = max(output, [], 2);
 
 % =========================================================================
 
