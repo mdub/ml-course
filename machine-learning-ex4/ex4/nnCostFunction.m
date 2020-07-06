@@ -62,17 +62,21 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
-hidden = sigmoid([ones(m, 1) X] * Theta1');
-predicted = sigmoid([ones(m, 1) hidden] * Theta2');
+% Forward propagate through the layers
+% "a1" (5000x401) = first layer
+a1 = addOnes(X);
+% "a2" (5000x26) = hidden layer
+a2 = addOnes(sigmoid(a1 * Theta1'));
+% "a3" (5000x10) = final (output) layer
+a3 = sigmoid(a2 * Theta2');
 
-% predicted is now a 5000x10 matrix, mapping: example -> probability(col)
 % y is a 5000x1 matrix, mapping: example -> label
-%
 % to compute J efficiently we want a 5000x10 matrix mapping: example -> (col == y)
-% 
-actual = repmat(1:num_labels, m, 1) == y;
+% "actual" (5000x10) = logic array of output labels
+actual = eye(num_labels)(y,:);
 
 % now calculate the diff between actual and predicted
+predicted = a3;
 cost_parts = -actual .* log(predicted) - (1 - actual) .* log(1 - predicted);
 base_cost = sum(sum(cost_parts)) / m;
 
@@ -83,6 +87,20 @@ regularisation = sum(theta_reg .^ 2) * lambda / 2 / m;
 J = base_cost + regularisation;
 
 % -------------------------------------------------------------
+
+% "d3" (5000x10) = delta between output layer and actual
+d3 = a3 - actual;       
+
+% "g2" (5000x26) = sigmoid gradient of a2
+g2 = a2 .* (1 - a2); 
+% "d2" (5000x25) = element-wise gradient
+d2 = ((d3 * Theta2) .* g2)(:,2:end);
+
+% "Theta1_grad" (25x401) = gradient for Theta1
+Theta1_grad = d2' * a1 / m;
+
+% "Theta2_grad" (10x26) = gradient for Theta2
+Theta2_grad = d3' * a2 / m;
 
 % =========================================================================
 
