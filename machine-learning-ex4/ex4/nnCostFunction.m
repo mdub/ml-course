@@ -72,7 +72,15 @@ predicted = sigmoid([ones(m, 1) hidden] * Theta2');
 % 
 actual = repmat(1:num_labels, m, 1) == y;
 
-J = sum(sum(-actual .* log(predicted) - (1 - actual) .* log(1 - predicted))) / m;
+% now calculate the diff between actual and predicted
+cost_parts = -actual .* log(predicted) - (1 - actual) .* log(1 - predicted);
+base_cost = sum(sum(cost_parts)) / m;
+
+% regularise theta, apart from the bias terms
+theta_reg = [ Theta1(:,2:end)(:); Theta2(:,2:end)(:) ];
+regularisation = sum(theta_reg .^ 2) * lambda / 2 / m;
+
+J = base_cost + regularisation;
 
 % -------------------------------------------------------------
 
