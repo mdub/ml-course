@@ -102,6 +102,12 @@ Theta1_grad = d2' * a1 / m;
 % "Theta2_grad" (10x26) = gradient for Theta2
 Theta2_grad = d3' * a2 / m;
 
+% account for regularisation
+Theta1(:,1) = 0;
+Theta1_grad = Theta1_grad + (Theta1 * lambda / m);
+Theta2(:,1) = 0;
+Theta2_grad = Theta2_grad + (Theta2 * lambda / m);
+
 % =========================================================================
 
 % Unroll gradients
