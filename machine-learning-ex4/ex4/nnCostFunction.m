@@ -62,23 +62,17 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+hidden = sigmoid([ones(m, 1) X] * Theta1');
+predicted = sigmoid([ones(m, 1) hidden] * Theta2');
 
+% predicted is now a 5000x10 matrix, mapping: example -> probability(col)
+% y is a 5000x1 matrix, mapping: example -> label
+%
+% to compute J efficiently we want a 5000x10 matrix mapping: example -> (col == y)
+% 
+actual = repmat(1:num_labels, m, 1) == y;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+J = sum(sum(-actual .* log(predicted) - (1 - actual) .* log(1 - predicted))) / m;
 
 % -------------------------------------------------------------
 
