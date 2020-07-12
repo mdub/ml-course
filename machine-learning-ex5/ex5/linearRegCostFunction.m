@@ -31,11 +31,21 @@ grad = zeros(size(theta));
 % "h" (Mx1) = hypotheses
 h = X * theta;
 
-% "J" is sum of squared errors (divided by 2m)
+% "theta_reg" is "theta" with the first term zeroed
+theta_reg = theta;
+theta_reg(1,1) = 0;
+
+% "J" is sum of squared errors (divided by 2*m), plus regularisation
 J = (
         sum((h - y) .^ 2) +
-        sum(theta(2:end) .^ 2) / lambda
+        sum(theta_reg .^ 2) * lambda
     ) / m / 2;
+
+% "grad" is the derivative
+grad = (
+        sum((h - y) .* X)' + 
+        theta_reg * lambda
+    ) / m;
 
 % =========================================================================
 
