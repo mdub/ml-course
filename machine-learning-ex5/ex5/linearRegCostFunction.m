@@ -19,7 +19,7 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
-% "X" (Mx1) = inputs
+% "X" (Mx2) = inputs, plus bias term
 % "y" (Mx1) = outputs
 % "theta" (2x1) = model parameters
 % "lambda" (1x1) = regularisation parameter
@@ -32,9 +32,10 @@ grad = zeros(size(theta));
 h = X * theta;
 
 % "J" is sum of squared errors (divided by 2m)
-J = sum((h - y) .^ 2) / m / 2;
-
-
+J = (
+        sum((h - y) .^ 2) +
+        sum(theta(2:end) .^ 2) / lambda
+    ) / m / 2;
 
 % =========================================================================
 
