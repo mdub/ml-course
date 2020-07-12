@@ -19,14 +19,20 @@ grad = zeros(size(theta));
 %               You should set J to the cost and grad to the gradient.
 %
 
+% "X" (Mx1) = inputs
+% "y" (Mx1) = outputs
+% "theta" (2x1) = model parameters
+% "lambda" (1x1) = regularisation parameter
 
+% compute:
+%   "J" (1x1)
+%   "grad" (2x1) = gradients for theta
 
+% "h" (Mx1) = hypotheses
+h = X * theta;
 
-
-
-
-
-
+% "J" is sum of squared errors (divided by 2m)
+J = sum((h - y) .^ 2) / m / 2;
 
 
 
