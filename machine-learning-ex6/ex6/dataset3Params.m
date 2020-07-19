@@ -42,9 +42,9 @@ for C = possible_values
   endfor
 endfor
 
-[prediction_error, i] = min(results(:,3))
-C = results(i,1)
-sigma = results(i,2)
+% [prediction_error, i] = min(results(:,3))
+% C = results(i,1)
+% sigma = results(i,2)
 
 % =========================================================================
 
