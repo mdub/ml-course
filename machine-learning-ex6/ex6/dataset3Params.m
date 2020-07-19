@@ -23,7 +23,8 @@ sigma = 0.3;
 %        mean(double(predictions ~= yval))
 %
 
-possible_values = [0.01,0.03,0.1,0.3,1,3,10,30];
+% possible_values = [0.01,0.03,0.1,0.3,1,3,10,30];
+possible_values = [0.1,1];
 
 results = zeros(length(possible_values) ^ 2, 3);
 
