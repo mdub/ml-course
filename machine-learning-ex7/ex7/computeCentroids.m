@@ -31,10 +31,15 @@ for k = 1:K
     % determine which points in X are coloured k
     x_k = X(idx == k, :);
     
+    % how many are there?
+    count_k = size(x_k, 1);
+
     % compute the mean position
-    u_k = sum(x_k) / size(x_k,1);
-    centroids(k,:) = u_k;
-    
+    if count_k > 0
+        u_k = sum(x_k) / count_k;
+        centroids(k,:) = u_k;
+    endif
+
 endfor
 
 % =============================================================
