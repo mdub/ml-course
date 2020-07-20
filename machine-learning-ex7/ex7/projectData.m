@@ -18,8 +18,19 @@ Z = zeros(size(X, 1), K);
 %                    projection_k = x' * U(:, k);
 %
 
+[m,n] = size(X);
 
+% "X" (m*n) = input features
+% "U" (n*2) = eigenvectors, per dimension
+% "K" (scalar) = target number of dimensions
 
+% "U_reduce" (K*2) = first K eigenvectors
+U_reduce = U(:, 1:K);
+
+% "Z" (m*K) = output features
+for i = 1:m
+  Z(i,:) = X(i,:) * U_reduce;
+endfor
 
 % =============================================================
 
