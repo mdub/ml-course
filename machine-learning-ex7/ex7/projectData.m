@@ -21,10 +21,10 @@ Z = zeros(size(X, 1), K);
 [m,n] = size(X);
 
 % "X" (m*n) = input features
-% "U" (n*2) = eigenvectors, per dimension
+% "U" (n*n) = eigenvectors, per dimension
 % "K" (scalar) = target number of dimensions
 
-% "U_reduce" (K*2) = first K eigenvectors
+% "U_reduce" (n*K) = first K eigenvectors
 U_reduce = U(:, 1:K);
 
 % "Z" (m*K) = output features

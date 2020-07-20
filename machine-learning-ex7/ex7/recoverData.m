@@ -21,7 +21,15 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               Notice that U(j, 1:K) is a row vector.
 %               
 
+% "Z" (m*K) = reduced features
+% "U" (n*n) = eigenvectors, per dimension
+% "K" (scalar) = target number of dimensions
 
+% "U_reduce" (n*K) = first K eigenvectors
+U_reduce = U(:, 1:K);
+
+% "X_rec" (m*n) = recovered original features
+X_rec = Z * U_reduce';
 
 % =============================================================
 
