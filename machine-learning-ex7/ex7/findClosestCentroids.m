@@ -24,7 +24,7 @@ idx = zeros(size(X,1), 1);
 m = length(X);
 
 for i = 1:m
-  x = X(i,:)
+  x = X(i,:);
   distances = zeros(K,1);
   for k = 1:K
     centroid = centroids(k,:);
