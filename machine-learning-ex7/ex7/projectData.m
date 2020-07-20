@@ -28,9 +28,7 @@ Z = zeros(size(X, 1), K);
 U_reduce = U(:, 1:K);
 
 % "Z" (m*K) = output features
-for i = 1:m
-  Z(i,:) = X(i,:) * U_reduce;
-endfor
+Z = X * U_reduce;
 
 % =============================================================
 
