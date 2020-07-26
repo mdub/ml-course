@@ -52,13 +52,14 @@ h = X * Theta';
 diffs = (h - Y) .* R;
 
 % "J" = cost function
-J = sum(diffs(:) .^ 2) / 2;
+J = sum(diffs(:) .^ 2) / 2 ...
+  + (sum(sum(Theta .^ 2)) + sum(sum(X .^ 2))) * lambda / 2;
 
 % "X_grad" (MxF) = gradients for X
-X_grad = diffs * Theta;
+X_grad = (diffs * Theta) + (lambda * X);
 
 % "Theta_grad" (UxF) = gradients for Theta
-Theta_grad = diffs' * X;
+Theta_grad = (diffs' * X) + (lambda * Theta);
 
 % =============================================================
 
