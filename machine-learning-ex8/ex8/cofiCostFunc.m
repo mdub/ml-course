@@ -40,20 +40,19 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+% "Y" (MxU) = movie ratings
+% "R" (MxU) = movie rated?
+% "X" (MxF) = (learned) movie features
+% "Theta" (UxF) = feature params by user
 
+% "h" (MxU) = predicted rating
+h = X * Theta';
 
+% "diffs" (MxU) = delta from predicted rating
+diffs = (h - Y) .* R;
 
-
-
-
-
-
-
-
-
-
-
-
+% "J" = cost function
+J = sum(diffs(:) .^ 2) / 2;
 
 % =============================================================
 
