@@ -129,22 +129,71 @@ my_ratings = zeros(1682, 1);
 
 % Check the file movie_idx.txt for id of each movie in our dataset
 % For example, Toy Story (1995) has ID 1, so to rate it "4", you can set
+
+% 1 Toy Story (1995)
 my_ratings(1) = 4;
 
-% Or suppose did not enjoy Silence of the Lambs (1991), you can set
-my_ratings(98) = 2;
+% 12 Usual Suspects, The (1995)
+my_ratings(12) = 5;
 
-% We have selected a few movies we liked / did not like and the ratings we
-% gave are as follows:
-my_ratings(7) = 3;
-my_ratings(12)= 5;
-my_ratings(54) = 4;
-my_ratings(64)= 5;
-my_ratings(66)= 3;
-my_ratings(69) = 5;
-my_ratings(183) = 4;
-my_ratings(226) = 5;
-my_ratings(355)= 5;
+% 29 Batman Forever (1995)
+my_ratings(29) = 4;
+
+% 42 Clerks (1994)
+my_ratings(42) = 4;
+
+% 52 Madness of King George, The (1994)
+my_ratings(52) = 4;
+
+% 53 Natural Born Killers (1994)
+my_ratings(53) = 3;
+
+% 56 Pulp Fiction (1994)
+my_ratings(56) = 3;
+
+% 64 Shawshank Redemption, The (1994)
+my_ratings(64) = 3;
+
+% 78 Free Willy (1993)
+my_ratings(78) = 2;
+
+my_ratings(98) = 4;     % Silence of the Lambs
+
+% 100 Fargo (1996)
+my_ratings(100) = 5;
+
+% 155 Dirty Dancing (1987)
+my_ratings(155) = 1;
+
+% 169 Wrong Trousers, The (1993)
+my_ratings(169) = 4;
+
+% 170 Cinema Paradiso (1988)
+my_ratings(170) = 4;
+
+% 171 Delicatessen (1991)
+my_ratings(171) = 5;
+
+% 172 Empire Strikes Back, The (1980)
+my_ratings(172) = 4;
+
+% 173 Princess Bride, The (1987)
+my_ratings(173) = 5;
+
+% 174 Raiders of the Lost Ark (1981)
+my_ratings(174) = 3;
+
+% 196 Dead Poets Society (1989)
+my_ratings(196) = 4;
+
+% 225 101 Dalmatians (1996)
+my_ratings(225) = 1;
+
+% 260 Event Horizon (1997)
+my_ratings(260) = 1;
+
+% 271 Starship Troopers (1997)
+my_ratings(271) = 5;
 
 fprintf('\n\nNew user ratings:\n');
 for i = 1:length(my_ratings)
