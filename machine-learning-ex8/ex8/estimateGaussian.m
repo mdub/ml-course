@@ -21,14 +21,18 @@ sigma2 = zeros(n, 1);
 %               should contain variance of the i-th feature.
 %
 
+% "means" (1XN) = mean per feature
+means = mean(X, 1);
 
+% "deltas" (MxN) = differences from mean
+deltas = X - means;
 
+% "variances" (1xN) = variance per feature
+variances = sum(deltas.^2) / m;
 
-
-
-
-
-
+% "mu" (Nx1) = mean, per feature
+mu = means';
+sigma2 = variances';
 
 % =============================================================
 
